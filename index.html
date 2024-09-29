@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M06.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Dar la bienvenida y preparar el ambiente</div>
+    </div>
+    <div id="saludo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Bienvenida"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hola, Genios. Hoy seguiremos explorando TinkerCAD, trabajando con cubos para crear formas más complejas. ¡Vamos a ver qué tan creativos pueden ser al transformar cubos en cilindros y arcos!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo Están?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Si están listos para crear algo nuevo hoy, agiten las manos en el aire. Si sienten que necesitan más inspiración, crucen los brazos. Vamos a ver cómo está la clase.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por Asistir"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Juntemos nuestras manos en agradecimiento por la oportunidad de aprender y crear juntos. ¡Gracias por asistir, Genios!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy tenemos dos objetivos importantes: <br> 1.- Crear un cilindro utilizando solo cubos en TinkerCAD. <br> 2.- Diseñar un arco utilizando únicamente cubos, explorando diferentes posiciones para crear la curva.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('statechange')">
+        <div class="title">
+            <span>🐱 Actividad 2: State Change (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Relajarnos con el Estiramiento de Gato</div>
+    </div>
+    <div id="statechange" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Estiramiento de Gato"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Antes de empezar con el modelado, vamos a relajar un poco el cuerpo. Vamos a hacer el Estiramiento de Gato. Primero, arqueen la espalda y estiren los brazos hacia adelante, tal como lo haría un gato.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 7 con un cronómetro de 1 minuto</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 8 "Reflexión Final"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora que hemos relajado los músculos y liberado algo de tensión, estamos listos para enfocarnos en crear. ¡Vamos a trabajar con toda esa energía renovada!
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (3 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('teamgnius')">
+        <div class="title">
+            <span>🤝 Actividad 3: Team Gnius (3 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Formación de equipos y preparación para el reto</div>
+    </div>
+    <div id="teamgnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 9 "Team Gnius"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, vamos a seguir trabajando con las mismas parejas que formaron en la clase anterior. Reúnanse con su compañero para empezar con el reto de hoy.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 10 con un cronómetro de 1 minuto</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 11 con un cronómetro de 1 minuto</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora, que un representante de cada equipo venga al frente a recoger una Magic Tablet. Pueden usarla para bocetar si lo necesitan durante el reto.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (6 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏗️ Actividad 4: Challenge (6 pasos)</span>
+            <span>⏰ Tiempo: 42 minutos</span>
+        </div>
+        <div class="subtitle">Creación de cilindros y arcos en TinkerCAD</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 12 "Challenge"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy tienen un reto dividido en dos partes. La primera es crear un cilindro utilizando solo cubos, ajustando su tamaño y orientación para simular la forma cilíndrica. La segunda parte es diseñar un arco usando únicamente cubos. Es crucial que se organicen bien como equipo para superar ambas partes. ¡Manos a la obra!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (35 minutos): Proyectar Diapositiva 13 con un cronómetro de 35 minutos</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (6 minutos): Proyectar Diapositiva 14 "Presentación de Resultados"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora vamos a escuchar a tres parejas que hayan superado las dos partes del reto. ¿Cómo lograron las formas con las limitaciones? ¿Cómo se organizaron como equipo? ¿Alguno tuvo un rol específico? Tienen 2 minutos para compartir cada uno.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 15 "Objetivos Alcanzados"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy hemos alcanzado dos grandes objetivos: <br> 1.- Crear un cilindro utilizando solo cubos. <br> 2.- Diseñar un arco utilizando únicamente cubos. ¡Gran trabajo, Genios!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 16 "You've Got Mon-e"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Felicidades, Genios. Han completado esta misión y ahora son merecedores de su Mon-e. ¡Buen trabajo a todos!
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (1 paso) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honordojo')">
+        <div class="title">
+            <span>🏅 Actividad 5: Honor The Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 0.5 minutos</span>
+        </div>
+        <div class="subtitle">Organización del salón y devolución de Magic Tablets</div>
+    </div>
+    <div id="honordojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 17 "Honor The Dojo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, antes de irnos, vamos a recoger nuestras áreas de trabajo. Recuerden siempre mantener en orden el espacio donde creamos grandes ideas. También, por favor, que un representante de cada equipo me devuelva las Magic Tablets. ¡Gracias por su esfuerzo hoy! Si disfrutaron la clase, espero verlos listos para la próxima.
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
